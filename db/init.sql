@@ -1,0 +1,27 @@
+CREATE DATABASE airplane_service;
+use airplane_service;
+
+CREATE TABLE Flight (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  source VARCHAR(10) NOT NULL,
+  dest VARCHAR(10) NOT NULL,
+  departureDay INTEGER NOT NULL,
+  departureHour INTEGER NOT NULL,
+  duration INTEGER NOT NULL,
+  numberOfSeats INTEGER NOT NULL,
+  flightID VARCHAR(10) NOT NULL UNIQUE,
+  reservedSeats INTEGER
+);
+
+CREATE TABLE Reservation (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  flightIDs VARCHAR(300) NOT NULL,
+  reservationID VARCHAR(10) NOT NULL UNIQUE
+);
+
+CREATE TABLE Ticket (
+  id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  reservationID VARCHAR(10) NOT NULL UNIQUE,
+
+  CONSTRAINT fk_Ticket_Reservation FOREIGN KEY (reservationID) REFERENCES Reservation (reservationID)
+);

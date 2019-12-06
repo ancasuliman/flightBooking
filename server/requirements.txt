@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+itsdangerous
+SQLAlchemy
+mysqlclient
+requests
+rstr
